@@ -1,6 +1,7 @@
 /**This line imports the HttpClient module from the Angular @angular/common/http package. 
  * HttpClient is used for making HTTP requests. */
 import { HttpClient} from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 /**This line imports the Injectable decorator from the Angular @angular/core package. 
  * The Injectable decorator is used to mark a class as available to the dependency injection system. */
@@ -32,9 +33,13 @@ export class SubjectService {
   /**This declares a method named getSubjects that returns an Observable of an array of subject objects. */
   getSubjects(): Observable<Array<subject>>{
 
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*');
+
     /**This line makes an HTTP POST request to the specified URL 'http://localhost:4200/subject' using the HttpClient instance 
      * (this.http). The empty object {} is passed as the request body. 
      * The method returns an Observable that will emit an array of subject objects once the HTTP request is complete. */
-    return this.http.post<Array<subject>>('http:localhost:4200/subject', {})
+    return this.http.get<Array<subject>>('http://localhost:3000/subjects', {headers})
   };
 }

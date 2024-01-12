@@ -12,7 +12,7 @@ import { subject } from '../../model/subject.model';
 
 /**This imports the Observable and Subject classes from the RxJS library. 
  * These are used for handling asynchronous operations and creating observable streams of data. */
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 /**This is the Component decorator, and it is used to define metadata for the Angular component. 
  * It specifies the component's selector, templateUrl (HTML file for the component), and styleUrls (CSS file for styling). */
@@ -27,7 +27,7 @@ export class SubjectComponent {
 
   /**This declares a property named subject and initializes it as an empty array of subject objects. 
    * This property will be used to store the subjects fetched from the service. */
-  subject: Array<subject> = [];
+  subjects: Array<subject> = [];
 
   /**This is the constructor of the SubjectComponent class. 
    * It takes an instance of SubjectService as a parameter (dependency injection) and initializes the component. */
@@ -38,7 +38,7 @@ export class SubjectComponent {
      * is received. */
     private SubjectService: SubjectService )
     {
-      this.getSubjects().subscribe((data) => {this.subject = data})
+      this.getSubjects().subscribe((data) => {this.subjects = data})
     }
 
   /**This method calls the getSubjects method from the injected SubjectService. 
