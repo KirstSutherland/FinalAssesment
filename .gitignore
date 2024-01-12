@@ -7,8 +7,9 @@
 /bazel-out
 
 # Node
-/node_modules
-npm-debug.log
+git remote add origin https://github.com/KirstSutherland/FinalAssesmentPlz.git
+git branch -M main
+git push -u origin mainnpm-debug.log
 yarn-error.log
 
 # IDEs and editors
