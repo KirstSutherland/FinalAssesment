@@ -1,5 +1,14 @@
 <table>
-  <p>hello</p>
-  {{ subjects | json}}
-</table>
-{{ subjects | json}}
+    <ng-container>
+      <tr>
+        <th>Subject ID</th>
+        <th>Subject Name</th>
+        <th>teacher Name</th>
+      </tr>
+      <tr *ngFor="let subject of subjects">
+        <td>{{ subjects | json }}</td>
+        <td>{{ subjects | json}}</td>
+        <td>{{ subjects | json}}</td>
+      </tr>
+    </ng-container>
+  </table>
