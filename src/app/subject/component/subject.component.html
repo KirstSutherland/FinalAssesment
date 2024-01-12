@@ -1,0 +1,14 @@
+<table>
+    <ng-container>
+      <tr>
+        <th>Subject ID</th>
+        <th>Subject Name</th>
+        <th>teacher Name</th>
+      </tr>
+      <tr *ngFor="let subject of subject">
+        <td>{{ subject.subjectID }}</td>
+        <td>{{ subject.subjectName }}</td>
+        <td>{{ subject.teacherName }}</td>
+      </tr>
+    </ng-container>
+  </table>
