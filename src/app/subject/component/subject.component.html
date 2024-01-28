@@ -1,3 +1,39 @@
+<div class = "subjectPage">
+  <h1>Subjects</h1>
+  <div class = "crudOperations">
+
+
+    <h2>Search</h2>
+    <label for="searchInput">Insert subject name:</label>
+    <input [(ngModel)]="searchInputValue" placeholder="Type here...">
+    <button (click)="search()">Search</button>
+
+
+    <h2>Delete</h2>
+    <label for="deleteInputValue">Insert name of subject to delete:</label>
+    <input [(ngModel)]="deleteInputValue" placeholder="Type here...">
+    <button (click)="delete()">Delete</button>
+
+    <h2>Update</h2>
+    <label for="updateSubject">Insert name of subject to update:</label>
+    <input [(ngModel)]="updateSubject" placeholder="Type here...">
+
+    <label for="updateProperty">Insert name property you would like to update:</label>
+    <input [(ngModel)]="updateProperty" placeholder="Type here...">
+
+    <label for="updateValue">Insert new property value:</label>
+    <input [(ngModel)]="updateValue" placeholder="Type here...">
+
+    <button (click)="update()">Update</button>
+
+    <h2>Add</h2>
+    <label for="addSubjectName">Insert subject name:</label>
+    <input [(ngModel)]="addSubjectName" placeholder="Type here...">
+
+    <label for="addTeacherName">Insert teacher name:</label>
+    <input [(ngModel)]="addTeacherName" placeholder="Type here...">
+    <button (click)="add()">Add</button>
+  </div>
 <table>
     <ng-container>
       <tr>
@@ -6,9 +42,10 @@
         <th>teacher Name</th>
       </tr>
       <tr *ngFor="let subject of subjects">
-        <td>{{ subjects | json }}</td>
-        <td>{{ subjects | json}}</td>
-        <td>{{ subjects | json}}</td>
+        <td>{{ subject.subjectID }}</td>
+        <td>{{ subject.subjectName}}</td>
+        <td>{{ subject.teacherName}}</td>
       </tr>
     </ng-container>
   </table>
+</div>

@@ -1,0 +1,55 @@
+<div class = "studentPage">
+  <h1>Students</h1>
+  <div class = "crudOperations">
+
+    <h2>Search</h2>
+    <label for="searchInput">Insert student number here:</label>
+    <input [(ngModel)]="searchInputValue" placeholder="Type here...">
+    <button (click)="search()">Search</button>
+
+    <h2>Delete</h2>
+    <label for="deleteInputValue">Insert student ID of student to delete:</label>
+    <input [(ngModel)]="deleteInputValue" placeholder="Type here...">
+    <button (click)="delete()">Delete</button>
+
+    <h2>Update</h2>
+    <label for="updateStudentID">Insert student ID to update:</label>
+    <input [(ngModel)]="updateStudentID" placeholder="Type here...">
+
+    <label for="updateProperty">Insert name property that you would like to update:</label>
+    <input [(ngModel)]="updateProperty" placeholder="Type here...">
+
+    <label for="updateValue">Insert new property value:</label>
+    <input [(ngModel)]="updateValue" placeholder="Type here...">
+
+    <button (click)="update()">Update</button>
+
+    <h2>Add</h2>
+    <label for="addStudentID">Insert student ID name:</label>
+    <input [(ngModel)]="addStudentID" placeholder="Type here...">
+
+    <label for="addFirstName">Insert student's first name:</label>
+    <input [(ngModel)]="addFirstName" placeholder="Type here...">
+
+    <label for="addTeacherName">Insert student's last name:</label>
+    <input [(ngModel)]="addLastName" placeholder="Type here...">
+    <button (click)="add()">Add</button>
+  </div>
+
+  <table>
+    <ng-container>
+      <tr>
+      <th>Student ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Subjects</th>
+      </tr>
+      <tr *ngFor="let student of students">
+      <td>{{ student.studentID }}</td>
+      <td>{{ student.firstName}}</td>
+      <td>{{ student.lastName}}</td>
+      <td>{{ student.subjects}}</td>
+      </tr>
+    </ng-container>
+    </table>
+</div>

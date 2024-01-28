@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
 
 /**This line imports the subject class from the specified path. 
  * A model representing the structure of a subject. */
-import { subject } from '../model/subject.model';
 import { student } from '../model/student.model';
 
 
@@ -25,15 +24,14 @@ import { student } from '../model/student.model';
 })
 
 /**Declaring the SubjectServices class */
-export class SubjectService {
-  private apiUrl = 'http://localhost:3000/api/subjects';
+export class StudentService {
+  private apiUrl = 'http://localhost:3000/api/student';
 
   /**This is the constructor of the SubjectService class. 
    * It takes an instance of the HttpClient class as a parameter and assigns it to a private property named http.*/
   constructor(private http: HttpClient) { }
 
-  /**This declares a method named getSubjects that returns an Observable of an array of subject objects. */
-  getSubjects(): Observable<Array<subject>>{
+  getStudents(): Observable<Array<student>>{
 
     const headers = new HttpHeaders()
       .set('content-type', 'application/json')
@@ -42,10 +40,13 @@ export class SubjectService {
     /**This line makes an HTTP POST request to the specified URL 'http://localhost:4200/subject' using the HttpClient instance 
      * (this.http). The empty object {} is passed as the request body. 
      * The method returns an Observable that will emit an array of subject objects once the HTTP request is complete. */
-    return this.http.get<Array<subject>>('http://localhost:3000/subject', {headers})
+    return this.http.get<Array<student>>('http://localhost:3000/student', {headers})
   };
-  getSpecificSubject(searchValue:string): Observable<subject>{
-    const url = `http://localhost:3000/subject/${searchValue}`;
+
+
+  getSpecificStudent(searchValue:string): Observable<student>{
+    const url = `http://localhost:3000/student/${searchValue}`;
+    console.log(searchValue);
 
 
     const headers = new HttpHeaders()
@@ -55,43 +56,39 @@ export class SubjectService {
     /**This line makes an HTTP POST request to the specified URL 'http://localhost:4200/subject' using the HttpClient instance 
      * (this.http). The empty object {} is passed as the request body. 
      * The method returns an Observable that will emit an array of subject objects once the HTTP request is complete. */
-    const result = this.http.get<subject>(url, { headers });
+    const result = this.http.get<student>(url, { headers });
     console.log(result)
     return result
   };
 
-  //const url = `http://localhost:3000/subject/${subjectName}`;
-
-  // Function to delete a subject by subjectName
-  deleteSubject(deleteInputValue: string): Observable<subject> {
-    const url = `http://localhost:3000/api/subjects/${deleteInputValue}`;
+  /** DELETE STUDENT BASED ON STUDENT NAME */
+  deleteStudent(deleteInputValue: string): Observable<student> {
+    const url = `http://localhost:3000/api/student/${deleteInputValue}`;
 
     const headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
 
-    return this.http.delete<subject>(url, { headers });
+    return this.http.delete<student>(url, { headers });
   }
 
-  // Add a new method in your SubjectService to update a subject property
-updateProperty(subjectName: string, property: string, newValue: string): Observable<subject> {
-  const url = `http://localhost:3000/api/subjects/${subjectName}/${property}`;
+  updateProperty(studentID: string, property: string, newValue: string): Observable<student> {
+    const url = `http://localhost:3000/api/student/${studentID}/${property}`;
 
-  const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
+    const headers = new HttpHeaders()
+        .set('content-type', 'application/json')
+        .set('Access-Control-Allow-Origin', '*');
 
-  const body = { newValue: newValue };
+    const body = { newValue: newValue };
 
-  return this.http.put<subject>(url, body, { headers });
-}
-
-  addSubject(subjectName: string, teacherName: string): Observable<any> {
-    const payload = { subjectName, teacherName };
+    return this.http.put<student>(url, body, { headers });
+  }
+  
+  
+  addStudent(newStudentID: string, newFirstName: string, newLastName: string): Observable<student> {
+    const payload = { newStudentID, newFirstName, newLastName };
     return this.http.post<any>(this.apiUrl, payload);
   }
-
-  
 
   
 }

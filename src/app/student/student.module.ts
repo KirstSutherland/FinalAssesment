@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SubjectRoutingModule } from '../subject-routing.module';
-import { SubjectComponent } from './subject.component';
+import { StudentRoutingModule } from './student_routing.module';
+import { StudentComponent } from './student.component';
 
 import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    SubjectComponent
+    StudentComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    SubjectRoutingModule
+    StudentRoutingModule
   ]
 })
-export class SubjectModule { }
+export class StudentModule { }

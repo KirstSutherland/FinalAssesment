@@ -1,6 +1,6 @@
 
 
-// Import the MongoClient object from the "mongodb" library
+/** Import the MongoClient object from the "mongodb" library
 const { MongoClient } = require("mongodb");
 
 // MongoDB connection URI
@@ -11,7 +11,7 @@ const client = new MongoClient(uri);
 
 // Define an asynchronous function named "run"
 async function run() {
-  try {
+  try {*/
     /** Query for a subject Maths
 
     // Query for a subject with the given id ('659be0ba55536751c8c91d18')
@@ -23,10 +23,10 @@ async function run() {
 
     // Log the retrieved subject to the console
     console.log(subject);*/
-  } finally {
+/**  } finally {
     // Ensure that the MongoDB client will be closed when the operation finishes or encounters an error
     await client.close();
   }
 }
 // Call the run function and catch any errors, then log them to the console
-run().catch(console.dir);
+run().catch(console.dir);*/
